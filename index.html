@@ -1,29 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Test Page - verify2.jgtl.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display - verify.jgtl.org</title>
     <style>
-        html, body {
+        .is-center {
+            text-align: center;
+        }
+
+        html,
+        body {
             height: 100%;
             margin: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #2c3e50; /* Dark background */
+            background-color: #2c3e50;
+            /* Dark background */
             font-family: Arial, sans-serif;
         }
 
-        .content {
+        h1 {
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .image-container {
+            width: 80%;
+            max-width: 900px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            /* Light background for the image */
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            color: white;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .certificate-link {
+            color: #2c3e50;
+            /* Dark text for the link */
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .certificate-link:hover {
+            color: #bdc3c7;
+            /* Change color on hover */
+        }
+
+        footer {
+            position: fixed;
+            bottom: 12px;
+            width: 100%;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .is-center {
+                font-size: 23px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="content">
-        <h1>Hello, World!</h1>
-        <p>This is a test page to see if anything displays.</p>
+
+    <h1 class="is-center">JGTL Online Report Verification</h1>
+
+    <div class="image-container">
+        <img src="https://verify.jgtl.org/JGTL24104.png" id="CertificateImage" alt="Certificate">
+        <a href="https://www.jgtl.org" class="certificate-link">Go to Website</a>
     </div>
+
+    <footer>
+        &copy; 2024 jgtl.org. All rights reserved.
+    </footer>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const url = urlParams.get('verify');
+        if (url) {
+            document.getElementById('CertificateImage').src = `https://verify.jgtl.org/${url}`;
+        }
+    </script>
 </body>
+
 </html>
